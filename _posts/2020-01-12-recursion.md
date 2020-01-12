@@ -1,121 +1,102 @@
 ---
 layout: post
-title:  "재귀"
+title:  "재귀 Recursion"
 ---
 
-Properties of Recursion:
+> 이 글은 Udemy의 [Data Structures & Algorithms !](https://www.udemy.com/course/learn-data-structure-algorithms-with-java-interview/) 강의를 듣고 정리한 것을 바탕으로 작성했습니다.
 
-- same operation is performed multiple times with different inputs
-- in every step we try to make the problem smaller
-- we mandatorily need to have a base condition, which tells system when to stop the recursion
+### 재귀란?
+* 같은 operation이 다른 입력값에 대해 여러 번 실행되는 것
+* 매번 문제를 더 작게 만드는 것
+* 프로그램이 끝없이 돌다가 맛이 가지 않게 하려면 base condition이 반드시 필요하다.
+- 문제를 비슷한 하위 문제로 계속 작게 쪼개는 방법. 따라서 코드를 작성하기 쉽다.
+- 트리, 그래프, 분할정복법, 그리디 알고리즘, 동적 프로그래밍 등 많은 자료구조와 알고리즘에서 쓰이는 방법
 
-shy should we learn recursion?
-
-* it makes the code easy to write (compared to 'iterative') whenever a given problem  can be broken down into similar sub-problems.
-* it is heavily used in Data Structures like Tree, Graphs, etc.
-* it is heavily used in techniques like 'Divide and Conquer', 'Greedy', 'Dynamic Programming'.
-
-format of a recursive function
-
+### 재귀함수의 format
 * recursive case: case where the function recur.
-
 * base case: case where the function does not recur.
 
-* ```python
-  def sample_recursion(params):
-      if base_case:
-          return base_case_value
-      else:
-          sample_recursion(modified_params)
-  ```
+```python
+def sample_recursion(params):
+    if base_case:
+        return base_case_value
+    else:
+        sample_recursion(modified_params)
+```
 
-how does recursion works internally?
+재귀함수는 내부적으로 stack 자료구조를 이용해 작동한다.
 
-* stack!
+```python
+def foo(n):
+    if n < 1:
+        return
+    else:
+        foo(n-1)
+    print("Hello World", n)
+```
 
-* ```python
-  def foo(n):
-      if (n<1):
-          return
-      else:
-          foo(n-1)
-      print("Hello World", n)
+```shell
+>>> foo(3)
+Hello World 1
+Hello World 2
+Hello World 3
+```
 
-  foo(3)
-  ```
+### 팩토리얼 Factorial
 
-* ```shell
-  Hello World 1
-  Hello World 2
-  Hello World 3
-  ```
+이란?
+* 0 이상의 정수에 대해서만
+* n!으로 표기
+* n! = 1부터 n까지 곱한 결과값
 
-factorial
+```python
+def factorial(n):
+    if n == 0: # base condition
+        return 1
+    return n * factorial(n-1)
+```
 
-* definition
+### 피보나치 수열 Fibonacci Series
 
-  * factorial of a non-negative integer n
-  * denoted by n!
-  * product of all positive integers from 1 to n
+이란?
+* 수열의 각 항은 직전 두 항의 합이다.
+* 첫 두 항은 0, 1이다.
+* 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
 
-* ```python
-  def factorial(n):
-      if n == 0: # base condition
-          return 1
-      return (n * factorial(n-1))
-  ```
+```python
+def fibonacci(n):
+    if n < 1:
+        raise ValueError
+    elif n == 1 or n == 2:
+        return n - 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+```
 
-fibonacci series
+(재귀함수는 수열의 점화식 같은 걸로 표현되는 문제들을 풀 때 유용하겠구나..?!)
 
-* definition
-
-  * a series of numbers in which each number is the sum of the two preceding numbers
-  * first 2 numbers by definition are 0 and 1.
-  * 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
-
-* ```python
-  def fib(n):
-      if n < 1:
-          throw error
-      elif n == 1 or n == 2:
-          return n - 1
-      else:
-          return fib(n-1) + fib(n-2)
-  ```
-
-* (재귀함수는 수열의 점화식 같은 걸로 표현되는 문제들을 풀 때 유용하겠구나..?!)
-
-recursion vs iteration
-
+### recursion vs iteration
 * compares space & time complexity
 
-* | particulars                            | recursion | iteration |
-  | -------------------------------------- | --------- | --------- |
-  | space efficient?                       | no        | yes       |
-  | time efficient?                        | no        | yes       |
-  | ease of code (to solve sub-problems) ? | yes       | no        |
+| particulars | recursion | iteration |
+| --- | --- | --- |
+| space efficient? | no | yes |
+| time efficient? | no | yes |
+| ease of code (to solve sub-problems)? | yes | no |
 
-* 공간: iteration은 함수들의 스택을 쌓을 필요 없이 루프를 돌리면 되니까 (이거 이해 안 됨. 아까 iteration도 스택 쌓지 않았나..?? 아님 그것도 재귀였나.... 모르겠다)
 
-* 시간(execution efficiency): 재귀는 스택의 push, pop operation을 계속하기 때문에
+공간: iteration은 함수들의 스택을 쌓을 필요 없이 루프를 돌리면 되니까 (이거 이해 안 됨. 아까 iteration도 스택 쌓지 않았나..?? 아님 그것도 재귀였나.... 모르겠다)
 
-when to use/avoid recursion?
+시간(execution efficiency): 재귀는 스택의 push, pop operation을 계속하기 때문에
 
-* use
-  * when we can easily breakdown a problem into similar subproblem
-  * when we are ok with extra overhead (both time and space) that comes with it
-    * 오버헤드가 정확히 얼마나 일어나는지 직접 조사해 봐야겠다
-    * 오버헤드를 예측할 수 없을 때는 최대한 재귀를 사용하지 말 것.
-      * (예시를 들어 주셨는데 못 알아들음...)
-  * when we need a quick working solution instead of efficient one.
-* avoid
-  * if the response to any of the above statements is NO, we should not go with recursion.
+### when to use/avoid recursion?
+- 문제를 비슷한 subproblem으로 쪼갤 수 있을 때
+- 재귀의 사용으로 인한 시/공간 소모 overhead를 예측할 수 있을 때
+- 문제를 빠르게 해결하고 싶을 때 (efficient하지는 않음)
+- 이 중 하나라도 해당하지 않는다면, 재귀를 사용하지 말 것!
 
-practical use of recursion
-
-* stack
-* tree - traversal / searching(Binary Search Tree) / insertion / deletion
-* sorting - quick sort / merge sort
-* divide and conquer
-* dynamic programming
-* etc.
+### 재귀의 사용 예시
+- 스택
+- 트리의 순회/탐색(이진 탐색 트리)/삽입/삭제
+- 분할정복법
+- 동적 프로그래밍
