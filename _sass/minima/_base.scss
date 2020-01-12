@@ -26,6 +26,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  letter-spacing: 0.2px;
 }
 
 
@@ -149,9 +150,10 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
-  border: 1px solid $grey-color-light;
+  // border: 1px solid $grey-color-light;
   border-radius: 3px;
   background-color: #eef;
+  font-family: Inconsolata;
 }
 
 code {
