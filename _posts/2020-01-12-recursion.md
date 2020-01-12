@@ -3,7 +3,7 @@ layout: post
 title:  "재귀 Recursion"
 ---
 
-> 이 글은 Udemy의 [Data Structures & Algorithms !](https://www.udemy.com/course/learn-data-structure-algorithms-with-java-interview/) 강의를 듣고 정리한 것을 바탕으로 작성했습니다.
+> 이 글은 Udemy의 [Data Structures & Algorithms !](https://www.udemy.com/course/learn-data-structure-algorithms-with-java-interview/) 강의를 바탕으로 작성했습니다.
 
 ### 재귀란?
 * 같은 operation이 다른 입력값에 대해 여러 번 실행되는 것
