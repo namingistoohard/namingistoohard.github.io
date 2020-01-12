@@ -2,8 +2,19 @@
 ### * 필요한 개념 : 재귀함수에 대한 이해 
 - 문제 출처 : https://codeup.kr/problem.php?id=3702
 
+---
+
+- 문제 내용 :
 ![image](https://user-images.githubusercontent.com/33515577/72219558-b49a6e00-358a-11ea-92d0-daa151d86e44.png)
 
+---
+
+- 알고리즘 설명 :
+
+
+---
+
+- 코드 :
 ```c++
 #include <iostream>
 
@@ -31,4 +42,6 @@ int pascal(int a, int b){
     }
 }
 ```
+
+---
 
