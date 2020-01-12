@@ -14,7 +14,7 @@
 
 ---
 
-- 코드 :
+- 내 코드 :
 ```c++
 #include <iostream>
 
@@ -44,4 +44,32 @@ int pascal(int a, int b){
 ```
 
 ---
+
+- 모범코드 : (내 코드보다 메모리를 반정도 더 적게 사용함) --> 추후 그 이유에 대해 좀더 생각해보면 좋을듯!!
+```c++
+
+#include <stdio.h>
+#define MOD 100000000
+ 
+int memo[55][55];
+ 
+int f(int row, int col)
+{
+    if(memo[row][col]) return memo[row][col];
+    if(row == 1 || col == 1) return 1;
+    return memo[row][col] = ( f(row-1, col) + f(row, col-1) ) % MOD;
+}
+ 
+int main ()
+{
+    int r, c;
+     
+    scanf("%d%d", &r, &c);
+    printf("%d", f(r, c));
+     
+    return 0;
+}
+
+
+```
 
