@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "알고리즘의 시간 복잡도"
+date:   2020-01-12 23:17:16 +0900
 ---
 
 > 이 글은 Udemy의 [Data Structures & Algorithms !](https://www.udemy.com/course/learn-data-structure-algorithms-with-java-interview/) 강의를 바탕으로 작성했습니다.
