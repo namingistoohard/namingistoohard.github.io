@@ -57,9 +57,9 @@ O(n^2) | Quadratic | Shortest path between 2 nodes in a graph
 O(n^3) | Cubic | Matrix Multiplication
 O(2^n) | Exponential | Tower of Hanoi Problem
 
-how to calculate run time complexity of a given algorithm?
+### how to calculate run time complexity of a given algorithm?
 
-* iterative algorithm
+#### iterative algorithm
 
 ```java
 int findBiggestNumber(int[] arr) { // 문법이 맞나 모르겠네,,,,
@@ -77,9 +77,7 @@ int findBiggestNumber(int[] arr) { // 문법이 맞나 모르겠네,,,,
 O(n) = O(n-1) = O(n-100). n이 커지면 상수는 의미가 없다.
 
 
-* recursive algorithm
-
-  * 문제 1
+#### recursive algorithm - 1
 
 ```
 FindBiggestNumber(A, n): // T(n)
@@ -93,10 +91,11 @@ FindBiggestNumber(A, n): // T(n)
 ```
 T()에 대해 설명하기! Back substitution
 
+#### recursive algorithm - 2
 
-  * 문제 2: 11개의 숫자가 정렬된 어레이에서 110이 없는지 찾아라.
+* 11개의 숫자가 정렬된 어레이에서 110이 없는지 찾아라.
 
-  * binary search를 쓴다.
+* binary search를 쓴다.
 
     * 찾는 값이 중간값보다 크면 오른쪽 숫자들 중에 또 가운데 숫자를 찾고, ....
     * 개수가 짝수면 어느 쪽을 볼 건지 골라야 함
