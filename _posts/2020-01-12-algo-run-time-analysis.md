@@ -1,43 +1,40 @@
 ---
 layout: post
-title:  "알고리즘의 시간 복잡도"
+title:  "알고리즘 성능 분석 Algorithm Run Time Analysis"
 date:   2020-01-12 23:17:16 +0900
 ---
 
 > 이 글은 Udemy의 [Data Structures & Algorithms !](https://www.udemy.com/course/learn-data-structure-algorithms-with-java-interview/) 강의를 바탕으로 작성했습니다.
 
-* what
-  * a study of a given algorithm's running time, by identifying its behavior as the input size for the algorithm increases. In a layman's language we can say, 'how much time will the given algorithm will take to run.
-  * 인풋의 크기가 늘어남에 따라서 알고리즘이 어떻게 행동(?)하는지
-* why
-  * 알고리즘의 efficiency를 측정하기 위해서
-  * 이 run time analysis에 대해서 잘 모르는 상태로 비효율적인 코드를 짠다면, 컴퓨터가 코드를 실행하다가 맛이 가 버릴 것이다.
+### 알고리즘 성능 분석이란?
+입력값의 크기가 늘어남에 따라 알고리즘이 시간과 메모리를 얼마나 사용하는지 분석하는 것이다.
+시간에 대한 성능 분석을 **시간 복잡도**라고 하고, 메모리에 대한 성능 분석을 **공간 복잡도**라고 한다.
 
-### algo run time analysis 표기법
+#### 알고리즘 성능 분석이 왜 필요한가?
+알고리즘의 효율성을 측정하기 위해서이다. 만약 알고리즘의 성능을 잘 알지 못하는 상태로 비효율적인 코드를 짠다면, 컴퓨터가 코드를 실행하는 도중에 부하가 걸려서 멈춰 버릴 수도 있다.
 
-차의 연비에 비유해 생각할 수 있다. 같은 차라도 어디를 달리는지에 따라 연비가 달라진다. 오프로드에서는 연비가 최악이 될 것이고, 깨끗한 고속도로 위에서는 연비가 최악이 될 것이다. 중간 상태?에서는 연비도 중간이 될 것이고... 알고 표기법에도 이렇게 3가지가 있다.
 
-#### 빅-오메가(Big-Omega) 표기법 (Ω)
-* 최상의 인풋을 가정한다.
+### 알고리즘 복잡도 표기법
+알고리즘의 복잡도를 표현하는 방법은 차의 연비에 비유해 생각할 수 있다. 같은 자동차도 어디를 달리는지에 따라 연비가 달라진다. 오프로드에서는 연비가 최악이 될 것이고, 깨끗한 고속도로 위에서는 최고가 될 것이다. 그리고 중간 상태(?)의 길 위에서는 연비도 중간이 될 것이다. 알고리즘의 복잡도를 표현하는 방식도 이와 비슷하다. 여기서는 가장 많이 쓰이는 세 가지를 살펴 볼 것이다.
+
+#### 빅-오메가 표기법 Big-Ω Notation
+* `Ω()`로 표기
+* 최상의 인풋을 가정한다. 즉, 알고리즘을 살행하는 데 걸리는 최소 시간을 나타낸다.
 * ex) 이 알고리즘에 100개의 인풋이 들어가면, 항상 최소 10초는 걸릴 것이지만 10초 이하로 걸리는 경우는 없다.
-* lower bound
-* will guarantee the minimum time 알고리즘이 실행되는 데 걸리는
 
-#### Big-o (O)
-* this notation gives us the tighter upper bound of a given algorithm.
-* in a layman's language we can say that for any given input, running time of a given algorithm will not be <u>more than</u> given time.
-* 최대 100초가 걸릴 것이다. (worst case)
-* 'more than' any given time (?)
-* 그래서 보통 여기에 맞춰서 어플리케이션을 개발하는 듯? exceed하지 않도록
-* 그래서 이거를 많이 효율성의 기준으로 삼음
+#### 빅-오 표기법 Big-O Notation
+* `O()`로 표기
+* 최악의 인풋을 가정한다. 즉, 알고리즘을 살행하는 데 걸리는 최대 시간을 나타낸다.
+* ex) 이 알고리즘에 100개의 인풋이 들어가면, 최악의 경우 100초가 걸릴 것이다.
 
-#### theta (그리스 문자 세타) Θ
+#### 빅-세타 표기법 Big-Θ Notation
+* `Θ()`로 표기
 * 평균 이 정도는 걸린다
 
-세 표기법 모두 학문적으로는 의미 있는 것들이지만, 항상 시간에 쫓기며 스파게티 코드를 생산해 내는 개발자들에게는 최소한 컴퓨터가 죽지만은 않았으면 좋겠다는 생각을 하고 있을 것이다~~ 따라서 보통은 빅오가 가장 유명하고 많이 쓰인다.
+세 표기법 모두 학문적으로는 의미 있는 것들이지만, 항상 시간에 쫓기며 스파게티 코드를 생산해 내는 개발자들에게는 최소한 컴퓨터가 맛이 가 버리지 않는 것이 중요하기 때문에 보통은 Big-O 표기법이 효율성의 기준으로 통용된다.
 
 #### 예시
-길이가 n인 배열에서 a라는 값을 찾아야 하는 경우,
+길이가 `n`인 배열에서 `a`라는 값을 찾아야 하는 경우, 이 세 가지 표기법으로는 각각 아래와 같이 표기할 수 있다.
 
 `Ω(1)`: 최선의 경우. 즉 a가 배열의 맨 처음(인덱스 0)에 존재할 경우
 
@@ -46,24 +43,24 @@ date:   2020-01-12 23:17:16 +0900
 `Θ(n/2)`: 모든 경우의 평균. 대략 n이 배열의 중간 지점에 위치하는 경우와 비슷할 것이다.
 
 
-examples of algorithm run time complexities
+#### 알고리즘의 시간 복잡도 표기 예시 (Big-O)
 
-Time Complexity | Name | Example
+시간 복잡도 | 이름 | 예시
 --- | --- | ---
-O(1) | Constant | Adding and element at front of linked list
-O(logn) | Logarithmic | Finding an element in sorted array
-O(n) | Lineear | Finding an elemetn in unsorted array
-O(nlogn) | Linear Logarithmin | Merge Sort
-O(n^2) | Quadratic | Shortest path between 2 nodes in a graph
-O(n^3) | Cubic | Matrix Multiplication
-O(2^n) | Exponential | Tower of Hanoi Problem
+O(1) | 상수 시간 Constant time | 연결 리스트에 노드 삽입
+O(logn) | 로그 시간 Logarithmic time | 정렬된 배열에서 주어진 값 찾기
+O(n) | 선형 시간 Linear time | 정렬되지 않은 배열에서 주어진 값 찾기
+O(nlogn) | 선형 로그 시간 Linear Logarithmic time | 합병 정렬
+O(n^2) | 2차 시간 Quadratic time | 그래프에서 두 노드 간의 최단 거리 구하기
+O(n^3) | 3차 시간Cubic time | 행렬곱
+O(2^n) | 지수 시간 Exponential time | 하노이의 탑 문제
 
-### how to calculate run time complexity of a given algorithm?
+### 알고리즘의 시간 복잡도는 어떻게 계산하는가?
 
-#### iterative algorithm
+#### 반복문
 
 ```java
-int findBiggestNumber(int[] arr) { // 문법이 맞나 모르겠네,,,,
+int findBiggestNumber(int[] arr) {
     int biggestNumber = arr[0]; // O(1)
     for (int i=1; i<arr.length; i++) { // O(n)
         if (arr[i] > biggestNumber) { // O(1)
@@ -73,49 +70,50 @@ int findBiggestNumber(int[] arr) { // 문법이 맞나 모르겠네,,,,
     return biggestNumber; // O(1)
 }
 ```
-시간복잡도 = O(n)
+* 시간복잡도 = O(n)
+* `O(n) = O(n-1) = O(n-100)`. n이 충분히 커지면 상수는 의미가 없다.
 
-O(n) = O(n-1) = O(n-100). n이 커지면 상수는 의미가 없다.
 
+#### 재귀 함수 - 1
 
-#### recursive algorithm - 1
-
-```
-FindBiggestNumber(A, n): // T(n)
+```java
+int findBiggestNumber(arr, n): // T(n)
     static highest = Integer.Min // O(1)
-    if n equals -1 // O(1)
-    return highest // O(1)
-    else // O(1)
-    if A[n] > highest // O(1)
-        update highest // O(1)
-    return FindBiggestNumber(A, n-1) // T(n-1)
+    if (n == -1) { // O(1)
+        return highest; // O(1)
+    } else { // O(1)
+        if (arr[n] > highest) { // O(1)
+            highest = arr[n]; // O(1)
+        } // O(1)
+    }
+    return findBiggestNumber(arr, n-1) // T(n-1)
 ```
-T()에 대해 설명하기! Back substitution
+`T()`은 후진 대입법backward substitution을 위한 것이라고 한다. 정확하게 무엇인지는 잘 모르겠어서 더 찾아봐야겠다.
 
-#### recursive algorithm - 2
+#### 재귀 함수 - 2
 
-* 11개의 숫자가 정렬된 어레이에서 110이 없는지 찾아라.
-
+문제: 11개의 숫자가 정렬된 배열에서 110을 찾아라.
 * binary search를 쓴다.
 
-    * 찾는 값이 중간값보다 크면 오른쪽 숫자들 중에 또 가운데 숫자를 찾고, ....
-    * 개수가 짝수면 어느 쪽을 볼 건지 골라야 함
+```java
+int binarySearch(int findNumber, int[] arr, int start, int end) { // T(n)
+    if (start == end) { // O(1)
+        if (arr[start] == findNumber) { // O(1)
+            return start; // O(1)
+        } else { // O(1)
+            throw new Exception("The number does not exists in the array"); // O(1)
+        }
+    }
 
-```
-binarySearch(int findNumber, int[] arr, start, end): # T(n)
-    if (start equals end): # O(1)
-        if (arr[start] equals findNumber): # O(1)
-            return start # O(1)
-        else: # O(1)
-            return error message # number does not exists in the array # O(1)
-
-    mid = findMid(arr, start, end) # O(1)
-    if mid > findNumber # O(1)
-        binarySearch(int findNumber, int[] arr, start, mid) # T(n/2)
-    elif mid < findNumber # O(1)
-        binarySearch(int findNumber, int[] arr, mid, end) # T(n/2)
-    elif mid == findNumber # O(1)
-        return mid # O(1)
+    int mid = findMid(arr, start, end); // O(1)
+    if (mid > findNumber) { // O(1)
+        binarySearch(findNumber, arr, start, mid); // T(n/2)
+    } else if (mid < findNumber) { // O(1)
+        binarySearch(findNumber, arr, mid, end); // T(n/2)
+    } else if (mid == findNumber) { // O(1)
+        return mid; // O(1)
+    }
+}
 ```
 
 * T(n/2^k) 자리에 1을 대입해서 T(1)
