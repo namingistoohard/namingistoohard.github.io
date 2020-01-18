@@ -13,7 +13,12 @@ layout: default
       {%- if page.author -%}
         {% assign author = site.data.members[page.author] %}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="p-author h-card" itemprop="name" href="https://github.com/{{ author.github }}">{{ author.name }}</a></span>
-      {%- endif -%}</p>
+      {%- endif -%}
+      &nbsp
+      {% for tag in page.tags %}
+        <a href="/tags#{{ tag }}"><code class="highlighter-rouge">{{ tag }}</code></a>
+      {% endfor %}
+    </p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">

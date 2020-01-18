@@ -21,6 +21,10 @@ layout: default
             {% assign author = site.data.members[post.author] %}
             • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="p-author h-card" itemprop="name" href="https://github.com/{{ author.github }}">{{ author.name }}</a></span>
           {%- endif -%}
+          &nbsp
+          {% for tag in post.tags %}
+            <a href="/tags#{{ tag }}"><code class="highlighter-rouge">{{ tag }}</code></a>
+          {% endfor %}
         </sp>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
