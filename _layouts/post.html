@@ -11,7 +11,8 @@ layout: default
         {{ page.date | date: date_format }}
       </time>
       {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="p-author h-card" itemprop="name" href="https://github.com/{{ site.data.members[page.author].github }}">{{ page.author }}</a></span>
+        {% assign author = site.data.members[page.author] %}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="p-author h-card" itemprop="name" href="https://github.com/{{ author.github }}">{{ author.name }}</a></span>
       {%- endif -%}</p>
   </header>
 
