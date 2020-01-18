@@ -5,14 +5,16 @@ title:  "연결 리스트 Linked List"
 
 > 이 글은 Udemy의 [Data Structures & Algorithms !](https://www.udemy.com/course/learn-data-structure-algorithms-with-java-interview/) 강의를 바탕으로 작성했습니다.
 
-### 목차
-#### [What is linked list]('#what-is-linked-list')
-
 ### 연결 리스트란?
+선형 자료구조이고, 연결 리스트를 구성하는 각 요소(노드)는 각각 독립된 객체이다. 노드 객체는 최소 두 가지의 속성을 가진다.
+* 값(value)
+* 다음 노드를 가리키는 레퍼런스(next)
 
-* a linear data structure where each element is a separate object. each element (node) of a list comprises of two items - the data and a reference to the next node. the most powerful feature of linked list is that it is of variable size.
-* head - node - node - node - node - ... - tail
-* ![linked_list](C:\Users\zoo2c\Desktop\ds_and_algo\linked_list.PNG)
+이로부터 알 수 있는 연결 리스트의 가장 큰 장점은, 크기가 가변적이라는 것이다.
+
+연결 리스트의 구조를 그림으로 나타내면 대략 다음과 같다.
+
+|haed|node|node|node|...|node|tail|
 
 ### 연결 리스트 vs. 배열
 
