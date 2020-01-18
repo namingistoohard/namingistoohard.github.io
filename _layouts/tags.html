@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<!-- 참고: https://min9nim.github.io/2018/08/jekyll-tags/ -->
+
+<h1 class="post-title">Tags</h1>
+{% for tag in site.tags %}
+  {% capture tag_name %}{{tag|first|slugize}}{% endcapture %}
+  <h2 class="post-list-heading">{{ tag_name }}</h2>
+  <ul class="post-list">
+    {% for post in site.tags[tag_name] %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
