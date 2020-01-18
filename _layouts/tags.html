@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<!-- 참고: https://min9nim.github.io/2018/08/jekyll-tags/ -->
+
+<h1 class="post-title">Tags</h1>
+{% for tag in site.tags %}
+  {% capture tag_name %}{{tag|first|slugize}}{% endcapture %}
+  <h2 id="{{ tag_name }}" class="post-list-heading">{{ tag_name }}</h2>
+  <ul class="post-list">
+    {% for post in site.tags[tag_name] %}
+      <li>
+        <span class="post-meta">
+          {{ post.date | date: "%b %-d, %Y" }}
+          {%- if post.author -%}
+            {% assign author = site.data.members[post.author] %}
+            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="p-author h-card" itemprop="name" href="https://github.com/{{ author.github }}">{{ author.name }}</a></span>
+          {%- endif -%}
+          &nbsp
+          {% for tag in post.tags %}
+            <a href="/tags#{{ tag }}"><code class="highlighter-rouge">{{ tag }}</code></a>
+          {% endfor %}
+        </span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
